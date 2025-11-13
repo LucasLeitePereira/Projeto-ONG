@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Voluntario
+from .models import Voluntario, Estagiario
 
 @admin.register(Voluntario)
 class VoluntarioAdmin(admin.ModelAdmin):
@@ -45,3 +45,31 @@ class VoluntarioAdmin(admin.ModelAdmin):
             'fields': ('cpfupload_voluntario', 'fotoupload_voluntario', 'termoupload_voluntario')
         }),
     )
+
+    @admin.display(description='Tipo')
+    def tipo_voluntario(self, obj):
+        if hasattr(obj, 'estagiario'):
+            return 'Estagiário'
+        elif hasattr(obj, 'advogado'):
+            return 'Advogado'
+        elif hasattr(obj, 'bacharel'):
+            return 'Bacharel'
+        return 'Voluntário'
+    
+@admin.register(Estagiario)
+class EstagiarioAdmin(admin.ModelAdmin):
+    list_display = [
+        'id_estagiario',
+        'get_nome_voluntario',
+        'curso_estagiario',
+        'periodo_estagiario'
+    ]
+    
+    search_fields = ['id_voluntario__nomecompleto_voluntario', 'curso_estagiario']
+    list_filter = ['curso_estagiario', 'periodo_estagiario']
+    readonly_fields = ['id_estagiario']
+    #inlines = [DisponibilidadeInline]
+    
+    @admin.display(description='Nome', ordering='id_voluntario__nomecompleto_voluntario')
+    def get_nome_voluntario(self, obj):
+        return obj.id_voluntario.nomecompleto_voluntario

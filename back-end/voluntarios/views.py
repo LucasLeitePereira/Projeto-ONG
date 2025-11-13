@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Voluntario
+from .models import Voluntario, Estagiario
 from services import formatar_cpf
 
 import json
@@ -41,6 +41,12 @@ def adicionar(request):
                 cpfupload_voluntario=cpfupload,
                 fotoupload_voluntario=fotoupload,
                 termoupload_voluntario=termoupload
+            )
+
+            estagiario = Estagiario.objects.create(
+                id_voluntario=voluntario,
+                curso_estagiario=data.get('curso'),
+                periodo_estagiario=data.get('periodo')
             )
             
             return JsonResponse({

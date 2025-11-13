@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import Voluntario, Estagiario
+from .models import Voluntario, Estagiario, Advogado, Bacharel, DisponibilidadeEstagiario
+
+class DisponibilidadeInline(admin.TabularInline):
+    model = DisponibilidadeEstagiario
+    extra = 1
+    fields = ['diasemana_estagiario', 'iniciodisponibilidade_estagiario', 'fimdisponibilidade_estagiario']
 
 @admin.register(Voluntario)
 class VoluntarioAdmin(admin.ModelAdmin):
@@ -68,8 +73,56 @@ class EstagiarioAdmin(admin.ModelAdmin):
     search_fields = ['id_voluntario__nomecompleto_voluntario', 'curso_estagiario']
     list_filter = ['curso_estagiario', 'periodo_estagiario']
     readonly_fields = ['id_estagiario']
-    #inlines = [DisponibilidadeInline]
+    inlines = [DisponibilidadeInline]
     
     @admin.display(description='Nome', ordering='id_voluntario__nomecompleto_voluntario')
     def get_nome_voluntario(self, obj):
         return obj.id_voluntario.nomecompleto_voluntario
+
+@admin.register(Advogado)
+class AdvogadoAdmin(admin.ModelAdmin):
+    list_display = [
+        'id_advogado',
+        'get_nome_voluntario',
+        'oab_advogado'
+    ]
+    
+    search_fields = ['id_voluntario__nomecompleto_voluntario', 'oab_advogado']
+    readonly_fields = ['id_advogado']
+    
+    @admin.display(description='Nome', ordering='id_voluntario__nomecompleto_voluntario')
+    def get_nome_voluntario(self, obj):
+        return obj.id_voluntario.nomecompleto_voluntario
+    
+@admin.register(Bacharel)
+class BacharelAdmin(admin.ModelAdmin):
+    list_display = [
+        'id_bacharel',
+        'get_nome_voluntario',
+        'cursoformacao_bacharel'
+    ]
+    
+    search_fields = ['id_voluntario__nomecompleto_voluntario', 'cursoformacao_bacharel']
+    list_filter = ['cursoformacao_bacharel']
+    readonly_fields = ['id_bacharel']
+    
+    @admin.display(description='Nome', ordering='id_voluntario__nomecompleto_voluntario')
+    def get_nome_voluntario(self, obj):
+        return obj.id_voluntario.nomecompleto_voluntario
+
+@admin.register(DisponibilidadeEstagiario)
+class DisponibilidadeEstagiarioAdmin(admin.ModelAdmin):
+    list_display = [
+        'id_disponibilidadeestagiario',
+        'get_nome_estagiario',
+        'diasemana_estagiario',
+        'iniciodisponibilidade_estagiario',
+        'fimdisponibilidade_estagiario'
+    ]
+    
+    list_filter = ['diasemana_estagiario']
+    search_fields = ['id_estagiario__id_voluntario__nomecompleto_voluntario']
+    
+    @admin.display(description='Estagiário', ordering='id_estagiario__id_voluntario__nomecompleto_voluntario')
+    def get_nome_estagiario(self, obj):
+        return obj.id_estagiario.id_voluntario.nomecompleto_voluntario

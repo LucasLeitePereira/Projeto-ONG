@@ -62,3 +62,75 @@ class Estagiario(models.Model):
     
     def __str__(self):
         return f"{self.id_voluntario.nomecompleto_voluntario} - Estagiário"
+
+class Advogado(models.Model):
+    id_advogado = models.AutoField(primary_key=True)
+    
+    id_voluntario = models.OneToOneField(
+        Voluntario,
+        on_delete=models.CASCADE,
+        db_column='id_voluntario',
+        related_name='advogado'
+    )
+    
+    oab_advogado = models.CharField(max_length=9, unique=True)
+    
+    class Meta:
+        db_table = 'Advogados'
+        verbose_name = 'Advogado'
+        verbose_name_plural = 'Advogados'
+    
+    def __str__(self):
+        return f"{self.id_voluntario.nomecompleto_voluntario} - OAB: {self.oab_advogado}"
+    
+class Bacharel(models.Model):
+    id_bacharel = models.AutoField(primary_key=True)
+    
+    id_voluntario = models.OneToOneField(
+        Voluntario,
+        on_delete=models.CASCADE,
+        db_column='id_voluntario',
+        related_name='bacharel'
+    )
+    
+    cursoformacao_bacharel = models.CharField(max_length=20)
+    
+    class Meta:
+        db_table = 'Bachareis'
+        verbose_name = 'Bacharel'
+        verbose_name_plural = 'Bacharéis'
+    
+    def __str__(self):
+        return f"{self.id_voluntario.nomecompleto_voluntario} - Bacharel em {self.cursoformacao_bacharel}"
+
+class DisponibilidadeEstagiario(models.Model):
+    DIAS_SEMANA = [
+        ('SEG', 'Segunda-feira'),
+        ('TER', 'Terça-feira'),
+        ('QUA', 'Quarta-feira'),
+        ('QUI', 'Quinta-feira'),
+        ('SEX', 'Sexta-feira'),
+        ('SAB', 'Sábado'),
+        ('DOM', 'Domingo'),
+    ]
+    
+    id_disponibilidadeestagiario = models.AutoField(primary_key=True)
+    
+    id_estagiario = models.ForeignKey(
+        Estagiario,
+        on_delete=models.CASCADE,
+        db_column='id_estagiario',
+        related_name='disponibilidades'
+    )
+    
+    diasemana_estagiario = models.CharField(max_length=20, choices=DIAS_SEMANA)
+    iniciodisponibilidade_estagiario = models.TimeField()
+    fimdisponibilidade_estagiario = models.TimeField()
+    
+    class Meta:
+        db_table = 'DisponibilidadesEstagiarios'
+        verbose_name = 'Disponibilidade do Estagiário'
+        verbose_name_plural = 'Disponibilidades dos Estagiários'
+    
+    def __str__(self):
+        return f"{self.id_estagiario.id_voluntario.nomecompleto_voluntario} - {self.diasemana_estagiario}"

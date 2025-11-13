@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'atendimentos',
     'core',
     'grutas',
-    'usuarios',
+    'voluntarios',
     'vitimas',
     'rest_framework',
 ]

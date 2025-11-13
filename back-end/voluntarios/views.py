@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Voluntario
+from services import formatar_cpf
 
 import json
 
@@ -35,7 +36,7 @@ def adicionar(request):
                 endereco_voluntario=endereco,
                 telefone_voluntario=telefone,
                 instagram_voluntario=instagram,
-                cpf_voluntario=cpf,
+                cpf_voluntario=formatar_cpf(cpf),
                 rg_voluntario=rg,
                 cpfupload_voluntario=cpfupload,
                 fotoupload_voluntario=fotoupload,

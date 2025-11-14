@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Bacharel - Superação da Violência Doméstica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oregano:wght@400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles-voluntario-form.css">
+</head>
+<body>
+    <!-- Menu Fixo -->
+    <header class="header-fixed">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="logotipo-cor.svg" alt="Superação da Violência Doméstica" width="300" height="75">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html#sou-vitima" class="nav-btn">SOU VÍTIMA</a>
+                <a href="voluntarios.html" class="nav-btn">PROGRAMA DE VOLUNTÁRIOS</a>
+                <a href="index.html#estagio" class="nav-btn">PROGRAMA DE ESTÁGIO</a>
+                <a href="index.html#gruta" class="nav-btn">GRUTA</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero geral">
+        <div class="hero-content">
+            <h1>Cadastro de Bacharel</h1>
+            <p>Contribua com sua formação em áreas de apoio</p>
+        </div>
+    </section>
+
+    <!-- Seção Formulário -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-intro">
+                <h2>Bem-vindo ao Programa de Bacharéis Voluntários</h2>
+                <p>Como bacharel voluntário, você utilizará sua formação em Psicologia, Serviço Social, Pedagogia ou outras áreas relacionadas para oferecer apoio especializado às vítimas de violência doméstica.</p>
+                <div class="important-notice">
+                    <strong>IMPORTANTE: É necessário ter formação superior completa em áreas relacionadas ao atendimento social.</strong>
+                </div>
+            </div>
+
+            <form class="volunteer-form" id="volunteerForm">
+                <div class="form-grid">
+                    <!-- Dados Pessoais -->
+                    <div class="form-group full-width">
+                        <h3>Dados Pessoais</h3>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nomecompleto_voluntario">Nome Completo *</label>
+                        <input type="text" id="nomecompleto_voluntario" name="nomecompleto_voluntario" required 
+                               pattern="[A-Za-zÀ-ÿ\s]+" 
+                               title="Digite apenas letras e espaços">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email_voluntario">E-mail *</label>
+                        <input type="email" id="email_voluntario" name="email_voluntario" required 
+                               placeholder="seu@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="datanasc_voluntario">Data de Nascimento *</label>
+                        <input type="date" id="datanasc_voluntario" name="datanasc_voluntario" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sexo_voluntario">Sexo *</label>
+                        <select id="sexo_voluntario" name="sexo_voluntario" required>
+                            <option value="">Selecione...</option>
+                            <option value="F">Feminino</option>
+                            <option value="M">Masculino</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cpf_voluntario">CPF *</label>
+                        <input type="text" id="cpf_voluntario" name="cpf_voluntario" required 
+                               placeholder="000.000.000-00" 
+                               maxlength="14">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rg_voluntario">RG *</label>
+                        <input type="text" id="rg_voluntario" name="rg_voluntario" required 
+                               placeholder="000000000" 
+                               maxlength="9">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefone_voluntario">Telefone *</label>
+                        <input type="text" id="telefone_voluntario" name="telefone_voluntario" required 
+                               placeholder="999999999" 
+                               maxlength="9">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="instagram_voluntario">Instagram (opcional)</label>
+                        <input type="text" id="instagram_voluntario" name="instagram_voluntario" 
+                               placeholder="@seuusuario" 
+                               maxlength="50">
+                    </div>
+
+                    <!-- Endereço -->
+                    <div class="form-group full-width">
+                        <h3>Endereço</h3>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="enderecorua_voluntario">Rua/Avenida *</label>
+                        <input type="text" id="enderecorua_voluntario" name="enderecorua_voluntario" required 
+                               maxlength="50" 
+                               placeholder="Ex: Rua das Flores, 123">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="enderecocidade_voluntario">Cidade *</label>
+                        <input type="text" id="enderecocidade_voluntario" name="enderecocidade_voluntario" required 
+                               maxlength="30" 
+                               placeholder="Ex: Rio de Janeiro">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="enderecoestado_voluntario">Estado *</label>
+                        <select id="enderecoestado_voluntario" name="enderecoestado_voluntario" required>
+                            <option value="">Selecione...</option>
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
+                        </select>
+                    </div>
+
+                    <!-- Dados Acadêmicos -->
+                    <div class="form-group full-width">
+                        <h3>Formação Acadêmica</h3>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="cursoformacao_voluntariobacharel">Curso de Formação *</label>
+                        <input type="text" id="cursoformacao_voluntariobacharel" name="cursoformacao_voluntariobacharel" required 
+                               pattern="[A-Za-zÀ-ÿ\s]+" 
+                               maxlength="50"
+                               placeholder="Ex: Psicologia, Serviço Social, Pedagogia">
+                    </div>
+
+                    <!-- Upload de Documentos -->
+                    <div class="form-group full-width">
+                        <h3>Upload de Documentos</h3>
+                        <p class="upload-info">Faça o upload dos documentos solicitados (formatos aceitos: PDF, JPG, PNG - máximo 5MB cada)</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="uploadcpf_voluntario">Cópia do CPF *</label>
+                        <input type="file" id="uploadcpf_voluntario" name="uploadcpf_voluntario" 
+                               accept=".pdf,.jpg,.jpeg,.png" required>
+                        <small>Arquivo obrigatório</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="uploadfoto_voluntario">Foto 3x4 *</label>
+                        <input type="file" id="uploadfoto_voluntario" name="uploadfoto_voluntario" 
+                               accept=".jpg,.jpeg,.png" required>
+                        <small>Arquivo obrigatório</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="uploadtemo_voluntario">Termo de Compromisso *</label>
+                        <input type="file" id="uploadtemo_voluntario" name="uploadtemo_voluntario" 
+                               accept=".pdf" required>
+                        <small>Baixe, assine e faça upload do <a href="#" >termo de compromisso</a></small>
+                    </div>
+
+                    <!-- Botões -->
+                    <div class="form-group full-width form-buttons">
+                        <button type="submit" class="submit-btn">Enviar Cadastro</button>
+                        <button type="button" class="cancel-btn" onclick="window.location.href='voluntarios.html'">Voltar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-message">
+                    <h3>Você Não Está Sozinha</h3>
+                    <p>Se você ou alguém que conhece está sofrendo violência doméstica, procure ajuda. Estamos aqui para apoiá-la em cada passo da sua jornada de superação.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-nav">
+                        <h4>Navegação</h4>
+                        <a href="index.html#sou-vitima">Sou Vítima</a>
+                        <a href="voluntarios.html">Programa de Voluntários</a>
+                        <a href="index.html#estagio">Programa de Estágio</a>
+                        <a href="index.html#gruta">GRUTA</a>
+                        <a href="index.html#sobre-nos">Sobre Nós</a>
+                        <a href="index.html#sobre-autora">Sobre a Autora</a>
+                    </div>
+                    
+                    <div class="footer-social">
+                        <h4>Redes Sociais</h4>
+                        <div class="social-links">
+                            <a href="#">Facebook</a>
+                            <a href="#">Instagram</a>
+                            <a href="#">Twitter</a>
+                            <a href="#">LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Superação da Violência Doméstica. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script-voluntario-form.js"></script>
+</body>
+</html>

@@ -1,0 +1,394 @@
+/* Reset e Configurações Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ========== HEADER ========== */
+.header-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    height: 100px;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-fixed .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.logo img {
+    width: 300px;
+    height: 75px;
+    object-fit: contain;
+}
+
+.logo a {
+    text-decoration: none;
+}
+
+.main-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-btn {
+    background: #ec6b61;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-btn:hover {
+    background: #d85a50;
+}
+
+/* ========== HERO SECTION ========== */
+.hero {
+    height: 500px;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('imgs/herosection03.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-top: 100px;
+    position: relative;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-family: 'Oregano', cursive;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* ========== SEÇÃO TIPOS DE VOLUNTÁRIOS ========== */
+.volunteer-types-section {
+    background: white;
+    padding: 80px 0;
+}
+
+.section-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px;
+}
+
+.section-intro h2 {
+    font-family: 'Oregano', cursive;
+    color: #ec6b61;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.section-intro p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.type-card {
+    background: white;
+    border-radius: 15px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 3px solid transparent;
+}
+
+.type-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(236, 107, 97, 0.2);
+    border-color: #ec6b61;
+}
+
+.card-icon {
+    margin-bottom: 20px;
+}
+
+.type-card h3 {
+    color: #ec6b61;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.type-card p {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.requirements {
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+}
+
+.requirements li {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.requirements li::before {
+    content: "✓";
+    color: #ec6b61;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.card-button {
+    background: #ec6b61;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    margin-top: 25px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.type-card:hover .card-button {
+    background: #d85a50;
+}
+
+.additional-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.info-box {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    border-left: 4px solid #ec6b61;
+}
+
+.info-box h3 {
+    color: #ec6b61;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.info-box p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* ========== RODAPÉ ========== */
+.footer {
+    background: white;
+    padding: 60px 0 20px;
+    border-top: 1px solid #eee;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    margin-bottom: 40px;
+}
+
+.footer-message h3 {
+    font-family: 'Oregano', cursive;
+    color: #ec6b61;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.footer-message p {
+    color: #666;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.footer-nav h4,
+.footer-social h4 {
+    color: #ec6b61;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.footer-nav a {
+    display: block;
+    color: #666;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+    color: #ec6b61;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.social-links a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #ec6b61;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    color: #666;
+}
+
+/* ========== RESPONSIVIDADE ========== */
+@media (max-width: 768px) {
+    .header-fixed {
+        height: auto;
+        padding: 15px 0;
+    }
+    
+    .header-fixed .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .logo img {
+        width: 200px;
+        height: 50px;
+    }
+    
+    .main-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .nav-btn {
+        font-size: 12px;
+        padding: 10px 15px;
+    }
+    
+    .hero {
+        background-attachment: scroll;
+        margin-top: 140px;
+        height: 400px;
+    }
+    
+    .volunteer-types-section {
+        padding: 60px 0;
+    }
+    
+    .types-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .type-card {
+        padding: 30px 20px;
+    }
+    
+    .section-intro h2 {
+        font-size: 2rem;
+    }
+    
+    .additional-info {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .footer-links {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .volunteer-types-section {
+        padding: 40px 0;
+    }
+    
+    .type-card {
+        padding: 25px 15px;
+    }
+    
+    .section-intro h2 {
+        font-size: 1.8rem;
+    }
+    
+    .section-intro p {
+        font-size: 1rem;
+    }
+}

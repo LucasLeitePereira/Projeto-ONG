@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Smooth scrolling para links de navegação
+    // Smooth scrolling para links de navegação - MELHORADO
     const navLinks = document.querySelectorAll('a[href^="#"]');
     
     navLinks.forEach(link => {
@@ -28,7 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetElement = document.getElementById(targetId);
             
             if (targetElement) {
-                const headerHeight = document.querySelector('.header-fixed').offsetHeight;
+                // Calcula altura do header dinamicamente (importante para mobile)
+                const header = document.querySelector('.header-fixed');
+                const headerHeight = header.offsetHeight;
                 const targetPosition = targetElement.offsetTop - headerHeight - 20;
                 
                 window.scrollTo({
@@ -38,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
     // Animação de entrada para cards quando entram na viewport
     const observerOptions = {
         threshold: 0.1,

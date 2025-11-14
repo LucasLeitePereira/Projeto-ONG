@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
@@ -17,7 +21,7 @@ body {
     padding: 0 20px;
 }
 
-/* Header Fixo */
+/* ========== HEADER ========== */
 .header-fixed {
     position: fixed;
     top: 0;
@@ -62,12 +66,12 @@ body {
     background: #d85a50;
 }
 
-/* Hero Section */
+/* ========== HERO SECTION ========== */
 .hero {
     height: 700px;
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('imgs/herosection01.jpg');
     background-size: cover;
-    background-position: top; /* Sua escolha - ficou ótima! */
+    background-position: top;
     background-attachment: fixed;
     display: flex;
     align-items: center;
@@ -83,16 +87,40 @@ body {
     z-index: 1;
 }
 
-/* Seção Sobre  */
+.hero-content h1 {
+    font-family: 'Oregano', cursive;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* ========== SEÇÃO SOBRE ========== */
 .about-section {
     background: #ec6b61;
     color: white;
     padding: 80px 0;
 }
 
-.about-section p{
+.about-section p {
     margin-top: 16px;
-    line-height: 22px;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.before-after-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .about-tabs {
@@ -116,7 +144,6 @@ body {
     opacity: 0.5;
 }
 
-/* NOVA ESTRUTURA: 3 colunas */
 .tab-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -128,7 +155,7 @@ body {
 
 .tab-panel.active {
     display: grid;
-    grid-template-columns: 1fr 1fr 300px; /* 2 colunas texto + 1 coluna imagem */
+    grid-template-columns: 1fr 1fr 300px;
     gap: 40px;
     align-items: start;
 }
@@ -150,13 +177,31 @@ body {
     object-fit: cover;
 }
 
-/* Seção Sou Vítima */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    margin: 20px 0;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+/* ========== SEÇÃO SOU VÍTIMA ========== */
 .victim-section {
     background: white;
     padding: 80px 0;
 }
 
 .victim-section h2 {
+    font-family: 'Oregano', cursive;
     text-align: center;
     font-size: 2.5rem;
     color: #ec6b61;
@@ -238,13 +283,14 @@ body {
     transform: translateY(-2px);
 }
 
-/* Seção Programas */
+/* ========== SEÇÃO PROGRAMAS ========== */
 .programs-section {
     background: white;
     padding: 80px 0;
 }
 
 .programs-section h2 {
+    font-family: 'Oregano', cursive;
     text-align: center;
     font-size: 2.5rem;
     color: #ec6b61;
@@ -311,13 +357,14 @@ body {
     background: #d85a50;
 }
 
-/* Seção Notícias */
+/* ========== SEÇÃO NOTÍCIAS ========== */
 .news-section {
     background: #f8f9fa;
     padding: 80px 0;
 }
 
 .news-section h2 {
+    font-family: 'Oregano', cursive;
     text-align: center;
     font-size: 2.5rem;
     color: #ec6b61;
@@ -381,7 +428,7 @@ body {
     color: #d85a50;
 }
 
-/* Rodapé */
+/* ========== RODAPÉ ========== */
 .footer {
     background: white;
     padding: 60px 0 20px;
@@ -396,8 +443,9 @@ body {
 }
 
 .footer-message h3 {
+    font-family: 'Oregano', cursive;
     color: #ec6b61;
-    font-size: 1.8rem;
+    font-size: 3rem;
     margin-bottom: 20px;
 }
 
@@ -455,7 +503,7 @@ body {
     color: #666;
 }
 
-/* Responsividade */
+/* ========== RESPONSIVIDADE ========== */
 @media (max-width: 768px) {
     .header-fixed {
         height: auto;
@@ -484,7 +532,7 @@ body {
     }
     
     .hero {
-        background-attachment: scroll; /* Remove parallax no mobile */
+        background-attachment: scroll;
         margin-top: 140px;
         height: 500px;
     }
@@ -498,16 +546,32 @@ body {
     }
     
     .tab-panel.active {
-        grid-template-columns: 1fr; /* Uma coluna no mobile */
+        grid-template-columns: 1fr;
         gap: 30px;
         text-align: center;
     }
+
+    .about-section p {
+        text-align: left;
+        font-size: 1rem;
+    }    
     
     .about-image {
-        height: 250px;
+        max-width: 250px;
+        height: auto;
         margin: 0 auto;
     }
+
+    .before-after-image {
+        display: block;
+        margin: 20px auto;
+        max-width: 300px;
+    }
     
+    .video-container {
+        padding-bottom: 75%;
+    }
+
     .about-tabs {
         flex-direction: column;
         align-items: center;
@@ -556,8 +620,22 @@ body {
     .tab-btn {
         font-size: 1.8rem;
     }
-    
+
+    .about-section {
+        padding: 40px 0;
+    }
+
+    .about-section p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
     .about-image {
         height: 200px;
+    }
+
+    .video-container {
+        padding-bottom: 65%;
+        margin: 15px 0;
     }
 }

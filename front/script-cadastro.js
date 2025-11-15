@@ -110,3 +110,50 @@ document.addEventListener('DOMContentLoaded', function() {
         return digito1 === parseInt(cpf.charAt(9)) && digito2 === parseInt(cpf.charAt(10));
     }
 });
+            // Preparar os dados do formulário
+            const dados = {
+                cpf: document.getElementById('cpf_vitima').value,
+                nome: document.getElementById('nome_vitima').value,
+                cep: document.getElementById('cep_vitima').value,
+                idade: document.getElementById('idade_vitima').value,
+                apelido: document.getElementById('apelido_vitima').value.replace(/\D/g, ''), // Remove pontos e traços
+                cidade: document.getElementById('cidade_vitima').value,
+                estado: document.getElementById('estado_vitima').value,
+                rua: document.getElementById('rua_vitima').value,
+                num_endereco: document.getElementById('num_endereco_vitima').value,
+                complemento_endereco: document.getElementById('complemento_endereco_vitima').value
+            };
+
+            // Enviar para a API
+            fetch('http://146.235.62.209:8000/api/vitimas/adicionar/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dados)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro na resposta da API');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        alert('Cadastro realizado com sucesso! Entraremos em contato em breve.');
+                        console.log('Resposta da API:', data);
+                        window.location.href = 'vitimas.html';
+                    } else {
+                        throw new Error(data.message || 'Erro ao cadastrar');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    alert('Erro ao enviar cadastro: ' + error.message + '. Tente novamente.');
+
+                    // Remover loading
+                    submitBtn.classList.remove('loading');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Enviar Cadastro';
+                });
+        

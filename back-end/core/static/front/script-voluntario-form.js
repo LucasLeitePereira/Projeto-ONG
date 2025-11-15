@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log("ERRO:", e)
             }
 
-            URL_Base = 'http://127.0.0.1:8000/'
+            URL_Base = 'http://146.235.62.209:8000/'
             Rota = ''
 
             if (dados.oab) {
@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (data.success) {
                         alert('Cadastro realizado com sucesso! Entraremos em contato em breve.');
                         console.log('Resposta da API:', data);
-                        window.location.href = "{% url 'voluntarios' %}";
+                        window.location.href = '/voluntarios/';
                     } else {
                         throw new Error(data.message || 'Erro ao cadastrar');
                     }

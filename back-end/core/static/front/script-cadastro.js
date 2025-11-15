@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
             
             if (data.success) {
                 alert('Cadastro realizado com sucesso! Entraremos em contato em breve.');
-                window.location.href = 'index.html';
+                window.location.href = "{% url 'index' %}";
             } else {
                 throw new Error(data.message || 'Erro ao cadastrar');
             }

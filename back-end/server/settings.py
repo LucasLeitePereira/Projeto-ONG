@@ -28,7 +28,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'atendimentos',
     'core',
-    'grutas',
     'voluntarios',
     'vitimas',
     'rest_framework',

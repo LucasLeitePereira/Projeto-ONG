@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -7,22 +8,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oregano:wght@400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles-noticia.css">
+    <link rel="stylesheet" href="{% static 'front/styles-noticia.css' %}">
 </head>
 <body>
     <!-- Menu Fixo -->
     <header class="header-fixed">
         <div class="container">
             <div class="logo">
-                <a href="index.html">
-                    <img src="logotipo-cor.svg" alt="Superação da Violência Doméstica" width="300" height="75">
+                <a href="{% url 'index' %}">
+                    <img src="{% static 'front/logotipo-cor.svg' %}" alt="Superação da Violência Doméstica" width="300" height="75">
                 </a>
             </div>
             <nav class="main-nav">
-                <a href="index.html#sou-vitima" class="nav-btn">SOU VÍTIMA</a>
-                <a href="voluntarios.html" class="nav-btn">PROGRAMA DE VOLUNTÁRIOS</a>
-                <a href="index.html#estagio" class="nav-btn">PROGRAMA DE ESTÁGIO</a>
-                <a href="index.html#gruta" class="nav-btn">GRUTA</a>
+                <a href="{% url 'index' %}#sou-vitima" class="nav-btn">SOU VÍTIMA</a>
+                <a href="{% url 'voluntarios' %}" class="nav-btn">PROGRAMA DE VOLUNTÁRIOS</a>
+                <a href="{% url 'voluntario_estagiario' %}" class="nav-btn">PROGRAMA DE ESTÁGIO</a>
+                <a href="{% url 'index' %}#gruta" class="nav-btn">GRUTA</a>
             </nav>
         </div>
     </header>
@@ -40,9 +41,9 @@
         <div class="container">
             <!-- Breadcrumb -->
             <nav class="breadcrumb">
-                <a href="index.html">Início</a>
+                <a href="{% url 'index' %}">Início</a>
                 <span class="separator">></span>
-                <a href="index.html#noticias">Notícias</a>
+                <a href="{% url 'index' %}#noticias">Notícias</a>
                 <span class="separator">></span>
                 <span class="current">Nova Campanha Nacional de Conscientização</span>
             </nav>
@@ -61,7 +62,7 @@
 
                 <!-- Imagem Destacada -->
                 <div class="article-featured-image">
-                    <img src="imgs/campanha-nacional.jpg" alt="Campanha Reconheça os Sinais">
+                    <img src="{% static 'front/imgs/campanha-nacional.jpg' %}" alt="Campanha Reconheça os Sinais">
                     <figcaption>Campanha "Reconheça os Sinais" visa educar sobre indicadores da violência doméstica</figcaption>
                 </div>
 
@@ -107,7 +108,7 @@
                     <h3>Precisa de Ajuda?</h3>
                     <p>Se você ou alguém que conhece está vivendo violência doméstica, procure ajuda:</p>
                     <div class="cta-buttons">
-                        <a href="cadastro-vitima.html" class="cta-button primary">Buscar Apoio</a>
+                        <a href="{% url 'cadastro_vitima' %}" class="cta-button primary">Buscar Apoio</a>
                         <a href="tel:180" class="cta-button secondary">Ligue 180</a>
                     </div>
                 </div>
@@ -138,22 +139,22 @@
                 <h3>Notícias Relacionadas</h3>
                 <div class="related-grid">
                     <article class="related-card">
-                        <img src="imgs/campanha-universidades.jpg" alt="Parceria com Universidades">
+                        <img src="{% static 'front/imgs/campanha-universidades.jpg' %}" alt="Parceria com Universidades">
                         <div class="related-content">
                             <span class="related-date">08 de Novembro, 2025</span>
                             <h4>Parceria com Universidades Locais</h4>
                             <p>Firmamos parcerias com universidades para ampliar nosso programa de estágios...</p>
-                            <a href="noticia-parceria-universidades.html" class="related-link">Leia mais</a>
+                            <a href="{% url 'noticia_parceria' %}" class="related-link">Leia mais</a>
                         </div>
                     </article>
                     
                     <article class="related-card">
-                        <img src="imgs/novo-centro-de-atendimento.jpg" alt="Novo Centro de Atendimento">
+                        <img src="{% static 'front/imgs/novo-centro-de-atendimento.jpg' %}" alt="Novo Centro de Atendimento">
                         <div class="related-content">
                             <span class="related-date">01 de Novembro, 2025</span>
                             <h4>Inauguração do Novo Centro de Atendimento</h4>
                             <p>Inauguramos nosso terceiro centro de atendimento, ampliando nossa capacidade...</p>
-                            <a href="noticia-novo-centro-atendimento.html" class="related-link">Leia mais</a>
+                            <a href="{% url 'noticia_novo_centro' %}" class="related-link">Leia mais</a>
                         </div>
                     </article>
                 </div>
@@ -173,12 +174,12 @@
                 <div class="footer-links">
                     <div class="footer-nav">
                         <h4>Navegação</h4>
-                        <a href="index.html#sou-vitima">Sou Vítima</a>
-                        <a href="voluntarios.html">Programa de Voluntários</a>
-                        <a href="index.html#estagio">Programa de Estágio</a>
-                        <a href="index.html#gruta">GRUTA</a>
-                        <a href="index.html#sobre-nos">Sobre Nós</a>
-                        <a href="index.html#sobre-autora">Sobre a Autora</a>
+                        <a href="{% url 'index' %}#sou-vitima">Sou Vítima</a>
+                        <a href="{% url 'voluntarios' %}">Programa de Voluntários</a>
+                        <a href="{% url 'voluntario_estagiario' %}">Programa de Estágio</a>
+                        <a href="{% url 'index' %}#gruta">GRUTA</a>
+                        <a href="{% url 'index' %}#sobre-nos">Sobre Nós</a>
+                        <a href="{% url 'index' %}#sobre-autora">Sobre a Autora</a>
                     </div>
                     
                     <div class="footer-social">
@@ -199,6 +200,6 @@
         </div>
     </footer>
 
-    <script src="script-noticia.js"></script>
+    <script src="{% static 'front/script-noticia.js' %}"></script>
 </body>
 </html>

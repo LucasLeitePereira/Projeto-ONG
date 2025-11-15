@@ -25,4 +25,4 @@ def noticia_parceria(request):
     return render(request, 'front/noticia-parceria-universidades.html')
 
 def noticia_novo_centro(request):
-    return render(request, 'front/noticia-novo-centro.html')
+    return render(request, 'front/noticia-novo-centro-atendimento.html')

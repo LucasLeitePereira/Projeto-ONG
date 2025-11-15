@@ -1,24 +1,19 @@
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-import json
+from django.shortcuts import render
 
-@csrf_exempt
-def test_message(request):
-    if request.method == 'GET':
-        return JsonResponse(
-            {
-                "status": 200,
-                "rota": "atendimentos",
-                "metodo": "GET",
-            }
-        )
-    elif request.method == 'POST':
-        data = json.loads(request.body)
-        mensagem = data.get('mensagem', 'Nenhuma mensagem enviada')
-            
-        return JsonResponse({
-            "sucesso": 200,
-            "rota": "atendimentos",
-            "metodo": "POST",
-            "mensagem_recebida": mensagem
-        })
+def index(request):
+    return render(request, 'front/index.html')
+
+def cadastro_vitima(request):
+    return render(request, 'front/cadastro-vitima.html')
+
+def voluntarios(request):
+    return render(request, 'front/voluntarios.html')
+
+def voluntario_advogado(request):
+    return render(request, 'front/voluntario-advogado.html')
+
+def voluntario_bacharel(request):
+    return render(request, 'front/voluntario-bacharel.html')
+
+def voluntario_estagiario(request):
+    return render(request, 'front/voluntario-estagiario.html')

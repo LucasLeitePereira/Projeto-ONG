@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -7,22 +8,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oregano:wght@400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles-cadastro.css">
+    <link rel="stylesheet" href="{% static 'front/styles-cadastro.css' %}">
 </head>
 <body>
     <!-- Menu Fixo -->
     <header class="header-fixed">
         <div class="container">
             <div class="logo">
-                <a href="index.html">
-                    <img src="logotipo-cor.svg" alt="Superação da Violência Doméstica" width="300" height="75">
+                <a href="{% url 'index' %}">
+                    <img src="{% static 'front/logotipo-cor.svg' %}" alt="Superação da Violência Doméstica" width="300" height="75">
                 </a>
             </div>
             <nav class="main-nav">
-                <a href="index.html#sou-vitima" class="nav-btn">SOU VÍTIMA</a>
-                <a href="index.html#voluntarios" class="nav-btn">PROGRAMA DE VOLUNTÁRIOS</a>
-                <a href="index.html#estagio" class="nav-btn">PROGRAMA DE ESTÁGIO</a>
-                <a href="index.html#gruta" class="nav-btn">GRUTA</a>
+                <a href="{% url 'index' %}#sou-vitima" class="nav-btn">SOU VÍTIMA</a>
+                <a href="{% url 'voluntarios' %}" class="nav-btn">PROGRAMA DE VOLUNTÁRIOS</a>
+                <a href="{% url 'estagio' %}" class="nav-btn">PROGRAMA DE ESTÁGIO</a>
+                <a href="{% url 'index' %}#gruta" class="nav-btn">GRUTA</a>
             </nav>
         </div>
     </header>
@@ -30,10 +31,6 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <!--
-            <h1>Você Não Está Sozinha</h1>
-            <p>Estamos aqui para apoiá-la em cada passo da sua jornada</p>
-            -->
         </div>
     </section>
 
@@ -48,7 +45,8 @@
                 </div>
             </div>
 
-            <form class="victim-form" id="victimForm">
+            <form class="victim-form" id="victimForm" method="post" action="{% url 'cadastro_vitima' %}">
+                {% csrf_token %}
                 <div class="form-grid">
                     <!-- Dados Pessoais -->
                     <div class="form-group full-width">
@@ -153,7 +151,7 @@
                     <!-- Botões -->
                     <div class="form-group full-width form-buttons">
                         <button type="submit" class="submit-btn">Enviar Cadastro</button>
-                        <button type="button" class="cancel-btn" onclick="window.location.href='index.html'">Cancelar</button>
+                        <button type="button" class="cancel-btn" onclick="window.location.href='{% url 'index' %}'">Cancelar</button>
                     </div>
                 </div>
             </form>
@@ -172,12 +170,12 @@
                 <div class="footer-links">
                     <div class="footer-nav">
                         <h4>Navegação</h4>
-                        <a href="index.html#sou-vitima">Sou Vítima</a>
-                        <a href="index.html#voluntarios">Programa de Voluntários</a>
-                        <a href="index.html#estagio">Programa de Estágio</a>
-                        <a href="index.html#gruta">GRUTA</a>
-                        <a href="index.html#sobre-nos">Sobre Nós</a>
-                        <a href="index.html#sobre-autora">Sobre a Autora</a>
+                        <a href="{% url 'index' %}#sou-vitima">Sou Vítima</a>
+                        <a href="{% url 'voluntarios' %}">Programa de Voluntários</a>
+                        <a href="{% url 'estagio' %}">Programa de Estágio</a>
+                        <a href="{% url 'index' %}#gruta">GRUTA</a>
+                        <a href="{% url 'index' %}#sobre-nos">Sobre Nós</a>
+                        <a href="{% url 'index' %}#sobre-autora">Sobre a Autora</a>
                     </div>
                     
                     <div class="footer-social">
@@ -198,6 +196,6 @@
         </div>
     </footer>
 
-    <script src="script-cadastro.js"></script>
+    <script src="{% static 'front/script-cadastro.js' %}"></script>
 </body>
 </html>

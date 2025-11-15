@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -8,22 +7,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oregano:wght@400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'front/styles-voluntarios.css' %}">
+    <link rel="stylesheet" href="styles-voluntarios.css">
 </head>
 <body>
     <!-- Menu Fixo -->
     <header class="header-fixed">
         <div class="container">
             <div class="logo">
-                <a href="{% url 'index' %}">
-                    <img src="{% static 'front/logotipo-cor.svg' %}" alt="Superação da Violência Doméstica" width="300" height="75">
+                <a href="index.html">
+                    <img src="logotipo-cor.svg" alt="Superação da Violência Doméstica" width="300" height="75">
                 </a>
             </div>
             <nav class="main-nav">
-                <a href="{% url 'index' %}#sou-vitima" class="nav-btn">SOU VÍTIMA</a>
-                <a href="{% url 'voluntarios' %}" class="nav-btn">PROGRAMA DE VOLUNTÁRIOS</a>
-                <a href="{% url 'index' %}#estagio" class="nav-btn">PROGRAMA DE ESTÁGIO</a>
-                <a href="{% url 'index' %}#gruta" class="nav-btn">GRUTA</a>
+                <a href="index.html#sou-vitima" class="nav-btn">SOU VÍTIMA</a>
+                <a href="index.html#voluntarios" class="nav-btn">PROGRAMA DE VOLUNTÁRIOS</a>
+                <a href="index.html#estagio" class="nav-btn">PROGRAMA DE ESTÁGIO</a>
+                <a href="index.html#gruta" class="nav-btn">GRUTA</a>
             </nav>
         </div>
     </header>
@@ -45,7 +44,7 @@
             </div>
 
             <div class="types-grid">
-                <div class="type-card" onclick="location.href='{% url 'voluntario_estagiario' %}'">
+                <div class="type-card" onclick="location.href='voluntario-estagiario.html'">
                     <div class="card-icon">
                         <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 14l9-5-9-5-9 5 9 5z" fill="#ec6b61"/>
@@ -64,7 +63,7 @@
                     </div>
                 </div>
 
-                <div class="type-card" onclick="location.href='{% url 'voluntario_advogado' %}'">
+                <div class="type-card" onclick="location.href='voluntario-advogado.html'">
                     <div class="card-icon">
                         <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z" fill="#ec6b61"/>
@@ -83,7 +82,7 @@
                     </div>
                 </div>
 
-                <div class="type-card" onclick="location.href='{% url 'voluntario_bacharel' %}'">
+                <div class="type-card" onclick="location.href='voluntario-bacharel.html'">
                     <div class="card-icon">
                         <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M20 6L9 17l-5-5" stroke="#ec6b61" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -129,20 +128,21 @@
                 <div class="footer-links">
                     <div class="footer-nav">
                         <h4>Navegação</h4>
-                        <a href="{% url 'index' %}#sou-vitima">Sou Vítima</a>
-                        <a href="{% url 'voluntarios' %}">Programa de Voluntários</a>
-                        <a href="{% url 'index' %}#estagio">Programa de Estágio</a>
-                        <a href="{% url 'index' %}#sobre-nos">Sobre Nós</a>
-                        <a href="{% url 'index' %}#sobre-autora">Sobre a Autora</a>
+                        <a href="index.html#sou-vitima">Sou Vítima</a>
+                        <a href="index.html#voluntarios">Programa de Voluntários</a>
+                        <a href="index.html#estagio">Programa de Estágio</a>
+                        <a href="index.html#gruta">GRUTA</a>
+                        <a href="index.html#sobre-nos">Sobre Nós</a>
+                        <a href="index.html#sobre-autora">Sobre a Autora</a>
                     </div>
                     
                     <div class="footer-social">
                         <h4>Redes Sociais</h4>
                         <div class="social-links">
-                            <a href="https://www.facebook.com/superacaodaviolenciadomestica/" >Facebook</a>
-                            <a href="https://www.instagram.com/superacaodaviolenciadomestica" >Instagram</a>
-                            <a href="https://www.youtube.com/channel/UCs70vMpWbElsnGNhkgB3ivw" >Youtube</a>
-                            <a href="https://br.pinterest.com/marilhaboldt/supera%C3%A7%C3%A3o-da-viol%C3%AAncia-dom%C3%A9stica/">Pinterest</a>
+                            <a href="#">Facebook</a>
+                            <a href="#">Instagram</a>
+                            <a href="#">Twitter</a>
+                            <a href="#">LinkedIn</a>
                         </div>
                     </div>
                 </div>
@@ -154,6 +154,6 @@
         </div>
     </footer>
 
-    <script src="{% static 'front/script-voluntarios.js' %}"></script>
+    <script src="script-voluntarios.js"></script>
 </body>
 </html>

@@ -57,9 +57,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const rua = document.getElementById('enderecorua_vitima').value.trim();
         const cidade = document.getElementById('enderecocidade_vitima').value.trim();
         const estado = document.getElementById('enderecoestado_vitima').value;
+        const complemento =  document.getElementById('enderecocomplemento_vitima').value;
 
         // Verificar campos obrigatórios
-        if (!nome || !apelido || !cpf || !idade || !cep || !rua || !cidade || !estado) {
+        if (!nome || !apelido || !cpf || !idade || !cep || !rua || !cidade || !estado || !complemento) {
             alert('Por favor, preencha todos os campos obrigatórios.');
             return;
         }
@@ -93,7 +94,8 @@ document.addEventListener('DOMContentLoaded', function () {
             cidade: cidade,
             estado: estado,
             rua: rua,
-            num_endereco: rua.match(/\d+/g)?.[0] || ''
+            num_endereco: rua.match(/\d+/g)?.[0] || '',
+            complementoEndereco: complemento
         };
 
         console.log('Enviando dados:', dados); // Para debug

@@ -2,12 +2,11 @@ from django.db import models
 
 class Vitima(models.Model):
     id_vitima = models.AutoField(primary_key=True)
-    cpf_vitima = models.CharField(max_length=11, unique=True)
+    cpf_vitima = models.CharField(max_length=14, unique=True)
     nome_vitima = models.CharField(max_length=150)
     cep_vitima = models.CharField(max_length=8)
     idade_vitima = models.IntegerField()
     apelido_vitima = models.CharField(max_length=30, blank=True, null=True)
-    num_apelido_vitima = models.IntegerField()
     cidade_vitima = models.CharField(max_length=30)
     estado_vitima = models.CharField(max_length=2)
     rua_vitima = models.CharField(max_length=50)

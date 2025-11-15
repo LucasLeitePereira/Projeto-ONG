@@ -19,6 +19,7 @@ def adicionar(request):
             estado = data.get('estado')
             rua = data.get('rua')
             num_endereco = data.get('num_endereco')
+            complemento = data.get('complementoEndereco')
 
             vitima = Vitima.objects.create(
                 cpf_vitima= formatar_cpf(cpf),
@@ -30,6 +31,7 @@ def adicionar(request):
                 estado_vitima=estado,
                 rua_vitima=rua,
                 num_endereco_vitima=num_endereco,
+                complemento_endereco_vitima=complemento
             )
             
             return JsonResponse({

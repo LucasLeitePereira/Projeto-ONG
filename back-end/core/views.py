@@ -17,3 +17,12 @@ def voluntario_bacharel(request):
 
 def voluntario_estagiario(request):
     return render(request, 'front/voluntario-estagiario.html')
+
+def noticia_campanha(request):
+    return render(request, 'front/noticia-campanha-nacional.html')
+
+def noticia_parceria(request):
+    return render(request, 'front/noticia-parceria-universidades.html')
+
+def noticia_novo_centro(request):
+    return render(request, 'front/noticia-novo-centro.html')

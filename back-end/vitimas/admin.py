@@ -32,7 +32,6 @@ class VitimaAdmin(admin.ModelAdmin):
                 'cpf_vitima',
                 'idade_vitima',
                 'apelido_vitima',
-                'num_apelido_vitima'
             )
         }),
         ('Endereço', {

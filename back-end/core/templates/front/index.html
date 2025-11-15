@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="{% static 'front/styles.css' %}">
 </head>
 <body>
-    <!-- Menu Fixo -->
     <header class="header-fixed">
         <div class="container">
             <div class="logo">
@@ -19,14 +18,12 @@
             </div>
             <nav class="main-nav">
                 <a href="#sou-vitima" class="nav-btn">SOU VÍTIMA</a>
-                <a href="{% url 'voluntarios' %}" class="nav-btn">PROGRAMA DE VOLUNTÁRIOS</a>
-                <a href="{% url 'estagio' %}" class="nav-btn">PROGRAMA DE ESTÁGIO</a>
-                <a href="#gruta" class="nav-btn">GRUTA</a>
+                <a href="#programs-section" class="nav-btn">PROGRAMA DE VOLUNTÁRIOS</a>
+                <a href="#news-section" class="nav-btn">NOTÍCIAS</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Juntos Podemos Quebrar o Ciclo da Violência</h1>
@@ -34,7 +31,6 @@
         </div>
     </section>
 
-    <!-- Seção Sobre Nós -->
     <section class="about-section">
         <div class="container">
             <div class="about-tabs">
@@ -95,7 +91,6 @@
         </div>
     </section>
 
-    <!-- Seção Sou Vítima -->
     <section id="sou-vitima" class="victim-section">
         <div class="container">
             <h2>Você Não Está Sozinha</h2>
@@ -138,7 +133,7 @@
         </div>
     </section>
 
-    <section class="programs-section">
+    <section id="programs-section" class="programs-section">
         <div class="container">
             <h2>Nossos Programas</h2>
             <div class="programs-grid">
@@ -157,13 +152,13 @@
                     </div>
                     <h3>Programa de Estágio</h3>
                     <p>Oportunidade para estudantes de Direito, Psicologia, Serviço Social e áreas afins aplicarem conhecimentos teóricos em casos reais, sempre com supervisão especializada.</p>
-                    <a href="{% url 'estagio' %}" class="card-btn">Candidatar-se ao Estágio</a>
+                    <a href="{% url 'voluntario_estagiario' %}" class="card-btn">Candidatar-se ao Estágio</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="news-section">
+    <section id="news-section" class="news-section">
         <div class="container">
             <h2>Últimas Notícias</h2>
             <div class="news-grid">
@@ -200,7 +195,6 @@
         </div>
     </section>
 
-    <!-- Rodapé -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -214,8 +208,7 @@
                         <h4>Navegação</h4>
                         <a href="#sou-vitima">Sou Vítima</a>
                         <a href="{% url 'voluntarios' %}">Programa de Voluntários</a>
-                        <a href="{% url 'estagio' %}">Programa de Estágio</a>
-                        <a href="#gruta">GRUTA</a>
+                        <a href="{% url 'voluntario_estagiario' %}">Programa de Estágio</a>
                         <a href="#sobre-nos">Sobre Nós</a>
                         <a href="#sobre-autora">Sobre a Autora</a>
                     </div>

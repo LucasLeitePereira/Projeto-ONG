@@ -1,10 +1,10 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Máscaras para CPF e CEP
     const cpfInput = document.getElementById('cpf_vitima');
     const cepInput = document.getElementById('cep_vitima');
 
     // Máscara CPF
-    cpfInput.addEventListener('input', function(e) {
+    cpfInput.addEventListener('input', function (e) {
         let value = e.target.value.replace(/\D/g, '');
         value = value.replace(/(\d{3})(\d)/, '$1.$2');
         value = value.replace(/(\d{3})(\d)/, '$1.$2');
@@ -13,16 +13,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Máscara CEP
-    cepInput.addEventListener('input', function(e) {
+    cepInput.addEventListener('input', function (e) {
         let value = e.target.value.replace(/\D/g, '');
         value = value.replace(/(\d{5})(\d)/, '$1-$2');
         e.target.value = value;
     });
 
     // Buscar endereço pelo CEP
-    cepInput.addEventListener('blur', function() {
+    cepInput.addEventListener('blur', function () {
         const cep = this.value.replace(/\D/g, '');
-        
+
         if (cep.length === 8) {
             fetch(`https://viacep.com.br/ws/${cep}/json/`)
                 .then(response => response.json())
@@ -41,10 +41,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Validação do formulário
     const form = document.getElementById('victimForm');
-    
-    form.addEventListener('submit', function(e) {
+
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
-        
+
+        // Pegar o botão de submit
+        const submitBtn = form.querySelector('button[type="submit"]');
+
         // Validações básicas
         const nome = document.getElementById('nome_vitima').value.trim();
         const apelido = document.getElementById('apelido_vitima').value.trim();
@@ -73,25 +76,76 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Se chegou até aqui, o formulário está válido
-        alert('Cadastro realizado com sucesso! Entraremos em contato em breve.');
-        
-        // Aqui você enviaria os dados para o servidor
-        console.log('Dados do formulário:', new FormData(form));
-        
-        // Redirecionar para página principal
-        window.location.href = 'index.html';
+        // Adicionar loading no botão
+        if (submitBtn) {
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Enviando...';
+        }
+
+        // Preparar os dados do formulário
+        const dados = {
+            cpf: cpf, // Remove pontos e traços
+            nome: nome,
+            cep: cep.replace(/\D/g, ''),
+            idade: parseInt(idade),
+            apelido: apelido,
+            cidade: cidade,
+            estado: estado,
+            rua: rua,
+            num_endereco: rua.match(/\d+/g)?.[0] || ''
+        };
+
+        console.log('Enviando dados:', dados); // Para debug
+
+        // Enviar para a API
+        fetch('http://146.235.62.209:8000/api/vitimas/adicionar/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(dados)
+        })
+        .then(response => {
+            console.log('Status da resposta:', response.status); // Para debug
+            
+            if (!response.ok) {
+                throw new Error(`Erro na resposta da API: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Resposta da API:', data); // Para debug
+            
+            if (data.success) {
+                alert('Cadastro realizado com sucesso! Entraremos em contato em breve.');
+                window.location.href = 'index.html';
+            } else {
+                throw new Error(data.message || 'Erro ao cadastrar');
+            }
+        })
+        .catch(error => {
+            console.error('Erro completo:', error);
+            alert('Erro ao enviar cadastro: ' + error.message + '. Tente novamente.');
+
+            // Remover loading
+            if (submitBtn) {
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Enviar Cadastro';
+            }
+        });
     });
 
     // Função para validar CPF
     function validarCPF(cpf) {
         cpf = cpf.replace(/\D/g, '');
-        
+
         if (cpf.length !== 11) return false;
-        
+
         // Verificar se todos os dígitos são iguais
         if (/^(\d)\1{10}$/.test(cpf)) return false;
-        
+
         // Validar dígitos verificadores
         let soma = 0;
         for (let i = 0; i < 9; i++) {
@@ -99,61 +153,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         let resto = 11 - (soma % 11);
         let digito1 = resto < 2 ? 0 : resto;
-        
+
         soma = 0;
         for (let i = 0; i < 10; i++) {
             soma += parseInt(cpf.charAt(i)) * (11 - i);
         }
         resto = 11 - (soma % 11);
         let digito2 = resto < 2 ? 0 : resto;
-        
+
         return digito1 === parseInt(cpf.charAt(9)) && digito2 === parseInt(cpf.charAt(10));
     }
 });
-            // Preparar os dados do formulário
-            const dados = {
-                cpf: document.getElementById('cpf_vitima').value,
-                nome: document.getElementById('nome_vitima').value,
-                cep: document.getElementById('cep_vitima').value,
-                idade: document.getElementById('idade_vitima').value,
-                apelido: document.getElementById('apelido_vitima').value.replace(/\D/g, ''), // Remove pontos e traços
-                cidade: document.getElementById('cidade_vitima').value,
-                estado: document.getElementById('estado_vitima').value,
-                rua: document.getElementById('rua_vitima').value,
-                num_endereco: document.getElementById('num_endereco_vitima').value,
-                complemento_endereco: document.getElementById('complemento_endereco_vitima').value
-            };
-
-            // Enviar para a API
-            fetch('http://146.235.62.209:8000/api/vitimas/adicionar/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(dados)
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erro na resposta da API');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.success) {
-                        alert('Cadastro realizado com sucesso! Entraremos em contato em breve.');
-                        console.log('Resposta da API:', data);
-                        window.location.href = 'vitimas.html';
-                    } else {
-                        throw new Error(data.message || 'Erro ao cadastrar');
-                    }
-                })
-                .catch(error => {
-                    console.error('Erro:', error);
-                    alert('Erro ao enviar cadastro: ' + error.message + '. Tente novamente.');
-
-                    // Remover loading
-                    submitBtn.classList.remove('loading');
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = 'Enviar Cadastro';
-                });
-        

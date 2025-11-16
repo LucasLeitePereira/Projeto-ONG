@@ -19,15 +19,6 @@ class Atendimento(models.Model):
         blank=True
     )
     
-    id_advogado = models.ForeignKey(
-        'voluntarios.Advogado',
-        on_delete=models.CASCADE,
-        db_column='id_advogado',
-        related_name='atendimentos',
-        null=True,
-        blank=True
-    )
-    
     # Campos do atendimento
     data_atendimento = models.DateField()
     hora_atendimento = models.TimeField()
